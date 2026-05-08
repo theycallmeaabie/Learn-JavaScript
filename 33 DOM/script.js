@@ -71,3 +71,32 @@ console.log("=== DOM MANIPULATION IN JAVASCRIPT ===\nDOM manipulation allows Jav
 console.log("=== GLOBAL VARIABLES IN BROWSER DEVTOOLS ===\nbrowser DevTools allow elements to be stored as temporary global variables using 'Store as global variable'.\nthis creates references like temp1, temp2, etc.\nthese variables point to selected DOM elements and can be used directly in the console.\nexample:\ntemp1.style.color = 'red'\nthis feature is useful for debugging, DOM testing, and experimenting quickly.\nthese global variables exist only inside the browser console and are not part of the webpage source code.\nDevTools also provide shortcuts like $0 for accessing the currently selected element.\n");
 
 console.log("=== WINDOW VS DOCUMENT ===\nwindow represents the entire browser window or browser tab.\ndocument represents the HTML webpage loaded inside the browser.\nwindow is the global object in browsers and is part of the BOM (Browser Object Model).\ndocument is the entry point to the DOM (Document Object Model).\nwindow controls browser-level features such as URL, history, navigation, alerts, and screen size.\ndocument controls webpage content such as HTML elements, text, images, and styles.\ndocument is actually a property of the window object.\nexample:\nwindow.document\nwindow focuses on browser interaction, while document focuses on webpage manipulation.\n");
+
+// Important Interview Points
+
+// innerHTML:
+
+// parses HTML
+// replaces content
+// can inject elements dynamically
+
+// innerText:
+
+// visible text only
+// respects CSS visibility
+
+// textContent:
+
+// returns all text
+// includes hidden text and formatting
+
+// | Property      | Parses HTML? | Includes Hidden Text? |
+// | ------------- | ------------ | --------------------- |
+// | `innerHTML`   | Yes          | Yes                   |
+// | `innerText`   | No           | No                    |
+// | `textContent` | No           | Yes                   |
+
+
+console.log("=== INNERHTML, INNERTEXT, AND TEXTCONTENT ===\ninnerHTML allows access and modification of HTML content inside an element.\ninnerHTML parses HTML tags and creates actual DOM elements dynamically.\nsetting element.innerHTML replaces all existing content inside that element.\nusing += with innerHTML appends new HTML content.\ninnerText returns only text visible to the user.\ninnerText respects CSS styles such as display:none and visibility:hidden.\ntextContent returns all text content inside an element, including hidden text, spaces, and line breaks.\ntextContent ignores CSS visibility rules.\ninnerHTML parses HTML, while innerText and textContent treat everything as plain text.\ntextContent is generally faster than innerText because it does not calculate layout or visibility.\n");
+
+console.log("=== INTERACTION OF INNERTEXT AND TEXTCONTENT WITH CSS ===\ninnerText depends on the browser's rendered view of the webpage.\ntextContent reads raw DOM text regardless of CSS visibility.\nif an element uses display:none, innerText excludes the hidden text while textContent still includes it.\nvisibility:hidden and opacity:0 also affect how innerText behaves because they impact rendered visibility.\ntextContent ignores CSS styles completely and always returns all text inside the DOM structure.\ninnerText is useful when you only need text visible to the user.\ntextContent is better for raw/full text extraction and generally provides better performance.\ninnerHTML is best for manipulating HTML structure and inserting HTML tags dynamically.\n");
