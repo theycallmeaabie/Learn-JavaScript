@@ -114,3 +114,12 @@ console.log("=== TEXT NODES AND CREATETEXTNODE() ===\nappendChild() only accepts
 // | modern method          | older           | newer      |
 
 console.log("=== APPEND() METHOD ===\nappend() is a modern DOM method used to insert content at the end of an element.\nappend() is more flexible than appendChild().\nappend() accepts strings, DOM nodes, text nodes, and multiple arguments in a single call.\nexample:\nelement.append('Hello', node)\nappend() automatically converts strings into Text Nodes internally.\nappendChild() only accepts a single DOM node and cannot append raw strings directly.\nappend() returns undefined.\nappendChild() returns the appended node.\nlike appendChild(), append() also moves existing DOM nodes instead of cloning them.\nappend() is commonly preferred in modern JavaScript because of its flexibility and cleaner syntax.\n");
+
+console.log("=== CAN PARENTS BE APPENDED? ===\nparent elements can be appended and moved like any other DOM node.\nwhen a parent element moves, all of its children move with it.\na DOM node cannot be appended inside one of its own descendants.\nthis would create a circular DOM tree, which is invalid.\nexample of invalid operation:\nchild.append(parent)\nwhen child already exists inside parent.\na node also cannot append itself.\nexample:\ndiv.append(div)\nbrowsers usually throw a HierarchyRequestError for invalid tree structures.\nthe DOM must always remain a valid hierarchical tree without cycles.\n");
+
+// | Operation                  | Valid? |
+// | -------------------------- | ------ |
+// | append child to new parent | ✅      |
+// | append parent elsewhere    | ✅      |
+// | append parent inside child | ❌      |
+// | append element into itself | ❌      |
